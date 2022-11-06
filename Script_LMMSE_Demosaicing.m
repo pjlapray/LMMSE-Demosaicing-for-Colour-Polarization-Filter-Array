@@ -6,6 +6,7 @@
 %              2- "Dumoulin R., Lapray P.-J., Thomas J.-B., Farup I., Impact of
 %              training data on LMMSE demosaicing for Colour-Polarization Filter Array,
 %              submitted to SITIS conference, 2022. (update when published).
+
 clc
 close all
 clear all
@@ -35,16 +36,8 @@ c_superpix = cols/width;                % number of superpixel in a column
 D=load(['Data/D_matrix.mat']).D;
 
 %% Demosaicing
-fun = @(x) (reshape(x.data(:),1,1,nh*nw));
-x1 = permute(blockproc(MosImg,[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[3 1 2]);
-y_estimate = D*reshape(x1,nh*nw,r_superpix*c_superpix);
-
-%% Reconstruction of demosaicked images
-img_estimate = zeros(rows, cols, P);
-for u = 1:P
-    img_estimate(:,:,u) = col2im(y_estimate(height*width*(u-1)+1:height*width*u,:), [height width], [r_superpix*height c_superpix*width],'distinct');
-end
-DemosImg = reshape(img_estimate,[r_superpix*height c_superpix*width 3 4]);
+fun = @(x) (reshape(D*x.data(:),4,4,12));
+DemosImg = reshape(blockproc(MosImg,[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[r_superpix*height c_superpix*width 3 4]);;
 
 %% Show result
 figure;
