@@ -15,7 +15,8 @@ clear all
 %% Load full resolution dataset
 path=pwd();
 folder_path = strcat(path, '/Data/Dataset/');
-FullDataset = Load_Dataset(true, folder_path); % This small dataset is made of 3 images, feel free to add you own or use existing datasets
+nbr_of_img = 3;
+FullDataset = Load_Dataset(true, folder_path, nbr_of_img); % This small dataset is made of 3 images, feel free to add you own or use existing datasets
 
 %% Mosaicking of the dataset
 MosDataset = Mosaicking(FullDataset, true,folder_path)
