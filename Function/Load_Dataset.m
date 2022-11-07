@@ -17,10 +17,10 @@ filename = dir(path);
 Dataset = cell((length(filename)-2), 5);
 filenames = natsortfiles(filename);
 for k = 2:length(filename)-1
-    img_0 = im2double(imread([path, filenames(k).name,'/0_' num2str(k-1) '.png']));
-    img_45 = im2double(imread([path, filenames(k).name,'/45_' num2str(k-1) '.png']));
-    img_90 = im2double(imread([path, filenames(k).name,'/90_' num2str(k-1) '.png']));
-    img_135 = im2double(imread([path, filenames(k).name,'/135_' num2str(k-1) '.png']));
+    img_0 = im2double(imread([path, '0_' num2str(k-1) '.png']));
+    img_45 = im2double(imread([path, '45_' num2str(k-1) '.png']));
+    img_90 = im2double(imread([path,'90_' num2str(k-1) '.png']));
+    img_135 = im2double(imread([path, '135_' num2str(k-1) '.png']));
 
     Dataset(k-1, 1:5) = {filenames(k).name, img_0, img_45, img_90, img_135};
 end
