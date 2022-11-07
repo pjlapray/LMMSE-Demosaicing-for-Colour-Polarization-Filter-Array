@@ -1,1 +1,2 @@
-
+This small dataset is composed by 3 scenes and is intended to be used during retraining of the D matrix.
+Feel free to add your own data and retrain to optimize the demosaicing relatively to your application.
