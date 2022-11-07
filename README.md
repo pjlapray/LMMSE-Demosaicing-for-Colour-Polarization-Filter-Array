@@ -7,7 +7,7 @@ The LMMSE demosaicing algorithm is a learning-based technique. The initial train
 
 Two scripts are provided as demonstration:
    - The script to use for demosaicing with the furbished pre-trained matrix D is "Script_LMMSE_Demosaicing".
-   - If you may want to retrain the demosaicing matrix with your own specific data, use the Script named "Script_LMMSE_training.m". Please use the same image structure as in Data/Dataset
+   - If you may want to retrain the demosaicing matrix with your own specific data, use the Script named "Script_LMMSE_training.m". Please use the same image structure as in "Data/Dataset".
 
 The "Data" folder contains a mosaiced image, a matrix used for demosaicing, along woth a dataset in case of retraining matrix D with the script "Script_LMMSE_training.m".
 
