@@ -23,23 +23,23 @@ MosImg=im2double(imread(['Data/im.tif'])); % (The scene has a polarizer sheet in
 figure;imshow(MosImg);title('Mosaiced image');
 
 %% Sizes definition
-height = 4;                                 % height of the superpixel
-width = 4;                                 % width of the superpixel
-nh = 10;                               % number of neighbors per column (this code is valid only for 10x10 neighborhood)
-nw= 10;                                % number of neighbors per line
-P = 12;                                % number of color-pola channels
+height = 4;                              % height of the superpixel
+width = 4;                               % width of the superpixel
+nh = 10;                                 % number of neighbors per column (this code is valid only for 10x10 neighborhood, including the 4x4 initial pattern surrounded by 3 columns at left and 3 colums at right)
+nw= 10;                                  % number of neighbors per line
+P = 12;                                  % number of color-pola channels
 [rows, cols, ~] = size(MosImg);
-r_superpix = rows/height;               % number of superpixel in a line
-c_superpix = cols/width;                % number of superpixel in a column
+r_superpix = rows/height;                % number of superpixel in a line
+c_superpix = cols/width;                 % number of superpixel in a column
 
 %% Load D_Matrix
 D=load(['Data/D_matrix.mat']).D;
 
 %% Demosaicing
 fun = @(x) (reshape(D*x.data(:),4,4,12));
-DemosImg = reshape(blockproc(MosImg,[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[r_superpix*height c_superpix*width 3 4]);;
+DemosImg = reshape(blockproc(MosImg,[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[r_superpix*height c_superpix*width 3 4]);
 
-%% Show result
+%% Show result images
 figure;
 subplot(2,2,1),imshow(DemosImg(:,:,:,1)),title('Demosaiced image for 0° polarization')
 subplot(2,2,2),imshow(DemosImg(:,:,:,2)),title('Demosaiced image for 45° polarization')
