@@ -12,6 +12,9 @@ clc
 close all
 clear all
 
+%% Add path to Matlab for access
+addpath(genpath('Function/'))
+
 %% Load full resolution dataset
 path=pwd();
 folder_path = strcat(path, '/Data/Dataset/');
