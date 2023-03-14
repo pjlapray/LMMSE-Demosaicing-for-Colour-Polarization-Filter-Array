@@ -34,6 +34,7 @@ for d = 1:Len
     im_nbr = d
     y1{d,1}=FullDataset{d,1};
     y_per_img = zeros(P*nh*nw, r_superpix*c_superpix);
+    y_per_img3(:,:,:,:)=zeros(nh*nw,P,r_superpix-2,c_superpix-2);
 
     % reshape image dataset for simplicity
     matrix = cat(3, FullDataset{d,2}, FullDataset{d,3}, FullDataset{d,4}, FullDataset{d,5});
@@ -44,7 +45,8 @@ for d = 1:Len
         fun = @(x) (reshape(x.data(:),1,1,nw*nh));
         y_per_img2(:,i,:,:) = permute(blockproc(matrix(1:end,1:end,i),[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[3 1 2]);
     end
-    y1{d,2} =  reshape(y_per_img2,nw*nh*P,r_superpix*c_superpix);
+    y_per_img3(:,:,:,:)=y_per_img2(:,:,2:r_superpix-1,2:c_superpix-1);
+    y1{d,2} =  reshape(y_per_img3,nw*nh*P,(r_superpix-2)*(c_superpix-2));
 end
 
 clear FullDataset
@@ -77,7 +79,7 @@ clear block_16x100 block_4x4 s
 disp('S1 computed');
 
 %% Compute y
-y = zeros( P*height*width, r_superpix*c_superpix, Len );
+y = zeros( P*height*width, (r_superpix-2)*(c_superpix-2), Len );
 for f = 1:Len
     y(:,:,f) = S1*y1{f,2};
 end
