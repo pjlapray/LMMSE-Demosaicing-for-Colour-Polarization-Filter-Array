@@ -12,7 +12,7 @@ close all
 clear all
 
 %% Global parameter
-D_Matrix_name = 'D_Matrix.mat';
+D_Matrix_name = 'D_Matrix.mat'; % If retrained, call D_Matrix_retrained
 Save = false; % true to save the demosaiced image
 
 %% Add path to Matlab for access
