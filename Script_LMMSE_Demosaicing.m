@@ -3,9 +3,9 @@
 %              colour and polarisation from filter arrays. 
 %              In 29th Color and Imaging Conference Final Program and Proceedings 2021. 
 %              Society for Imaging Science and Technology."
-%              2- "Dumoulin R., Lapray P.-J., Thomas J.-B., Farup I., Impact of
-%              training data on LMMSE demosaicing for Colour-Polarization Filter Array,
-%              submitted to SITIS conference, 2022. (update when published).
+%              2- "Dumoulin R, Lapray P.-J., Thomas J.-B., (2022), Impact of training data on
+%              LMMSE demosaicing for Colour-Polarization Filter Array,  16th International Conference on Signal-Image Technology & Internet-Based Systems (SITIS),
+%              2022, Dijon, France.
 
 clc
 close all
