@@ -4,10 +4,13 @@
 % retrain with your own dataset.
 % At the end of this Script, you will find the new trained D matrix in
 % folder "Data".
-% Reference : "Spote A, Lapray PJ, Thomas JB, Farup I. Joint demosaicing of
+% References : 1-"Spote A, Lapray PJ, Thomas JB, Farup I. Joint demosaicing of
 %              colour and polarisation from filter arrays. 
 %              In 29th Color and Imaging Conference Final Program and Proceedings 2021. 
 %              Society for Imaging Science and Technology."
+%              2- "Dumoulin R, Lapray P.-J., Thomas J.-B., (2022), Impact of training data on
+%              LMMSE demosaicing for Colour-Polarization Filter Array,  16th International Conference on Signal-Image Technology & Internet-Based Systems (SITIS),
+%              2022, Dijon, France.
 clc
 close all
 clear all
