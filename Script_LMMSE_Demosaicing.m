@@ -33,7 +33,7 @@ r_superpix = rows/height;                % number of superpixel in a line
 c_superpix = cols/width;                 % number of superpixel in a column
 
 %% Load D_Matrix
-D=load(['Data/D_matrix.mat']).D;
+D=load(['Data/' D_Matrix_name]).D;
 
 %% Demosaicing
 fun = @(x) (reshape(D*x.data(:),4,4,12));
