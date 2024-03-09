@@ -19,7 +19,7 @@ Save = false; % true to save the demosaiced image
 addpath(genpath('Function/'))
 
 %% Load mosaiced image
-MosImg=im2double(imread(['Data/im.tif'])); % (The scene has a polarizer sheet in background)
+MosImg = im2double(imread(['./Data/im.tif'])); % (The scene has a polarizer sheet in background)
 figure;imshow(MosImg);title('Mosaiced image');
 
 %% Sizes definition
@@ -33,11 +33,10 @@ r_superpix = rows/height;                % number of superpixel in a line
 c_superpix = cols/width;                 % number of superpixel in a column
 
 %% Load D_Matrix
-D=load(['Data/' D_Matrix_name]).D;
+D = load(['./Data\' D_Matrix_name]).D;
 
 %% Demosaicing
-fun = @(x) (reshape(D*x.data(:),4,4,12));
-DemosImg = reshape(blockproc(MosImg,[4,4],fun,BorderSize=[3 3],TrimBorder=false,UseParallel =true),[r_superpix*height c_superpix*width 3 4]);
+DemosImg = Function_LMMSE_Demosaicing(MosImg,D);
 
 %% Show result images
 figure;
